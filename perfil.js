@@ -18,7 +18,7 @@ function mostrarPerfil(){
     }
 
     var user = JSON.parse(userTxt); // converti o texto para um objeto javascript
-
+    console.log(user);
     // a idéia aqui é preencher as coisas
 
     // foto
@@ -35,7 +35,18 @@ function mostrarPerfil(){
                             .replace("{{CONECTOR}}",user.computador.conectorRede);
                 
     document.getElementById("bioUser").innerHTML = strBio;
-}
+
+    var i, arrayLen;
+    arrayLen = user.bancoAlteracao.length;
+    console.log(arrayLen);
+    for(i = 0; i < arrayLen; i++){
+      document.getElementById("arrayVlanAntiga").innerHTML += user.bancoAlteracao[i].vlanOld + '<br>';
+    }
+    for(i = 0; i < arrayLen; i++){
+      document.getElementById("arrayVlanNova").innerHTML += user.bancoAlteracao[i].vlanNew + '<br>';
+    }
+
+} 
 
 function logout(){
     localStorage.removeItem("userVlan");
